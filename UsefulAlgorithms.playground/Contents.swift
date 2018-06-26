@@ -153,3 +153,40 @@ func topTwoLongestNames(names: [String]) -> (String?, String?) {
 let myVaues1 = topTwoLongestNames(names: ["Adam", "Tom", "Sebastian", "Julia", "Emilia"])
 let myVaues2 = topTwoLongestNames(names: ["Adam"])
 let myVaues3 = topTwoLongestNames(names: [])
+
+//#####################################################################################
+//#####################################################################################
+// VIII. Linear/binary search in sorted array
+let allNumbers = [1, 2, 3, 4, 5, 6, 7, 10, 12, 14, 17, 18, 20]
+
+func linearValueSearch(searchValue: Int, array: [Int]) -> Bool {
+    for num in array {
+        if num == searchValue {
+            return true
+        }
+    }
+    return false
+}
+
+func binaryValueSearch(searchValue: Int, array: [Int]) -> Bool {
+    var leftIndex = 0
+    var rightIndex = array.count - 1
+    while (leftIndex <= rightIndex) {
+        let middleIndex = (leftIndex + rightIndex) / 2
+        let middleValue = array[middleIndex]
+        if middleValue == searchValue {
+            return true
+        }
+        if searchValue < middleValue {
+            rightIndex = middleIndex - 1
+        } else {
+            leftIndex = middleIndex + 1
+        }
+    }
+    
+    
+    return false
+}
+
+linearValueSearch(searchValue: 7, array: allNumbers)
+binaryValueSearch(searchValue: 30, array: allNumbers)
